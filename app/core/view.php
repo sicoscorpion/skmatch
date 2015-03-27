@@ -20,12 +20,14 @@ class View {
         // require Config::get('PATH_VIEW') . '_templates/feedback.php';
 		$feedback_positive = Session::get('feedback_positive');
 		$feedback_negative = Session::get('feedback_negative');
-		Self::alertMsg(count($feedback_positive));
+
 		// echo out positive messages
 		if (isset($feedback_positive) && count($feedback_positive) > 1) {
 		    foreach ($feedback_positive as $feedback) {
 		        echo '<div class="feedback success">'.$feedback.'</div>';
 		    }
+		} else {
+			echo '<div class="feedback success">'.$feedback_positive[0].'</div>';
 		}
 
 		// echo out negative messages
@@ -33,6 +35,8 @@ class View {
 		    foreach ($feedback_negative as $feedback) {
 		        echo '<div class="feedback error">'.$feedback.'</div>';
 		    }
+		} else {
+			echo '<div class="feedback success">'.$feedback_negative[0].'</div>';
 		}
         // delete these messages (as they are not needed anymore and we want to avoid to show them twice
         Session::set('feedback_positive', null);

@@ -5,6 +5,7 @@
 		<div class="row">
 	    <div class="large-12 columns">
 				<h4>Register</h4>
+				<?php $this->renderFeedbackMessages(); ?>
 			</div>
 		</div>
 		<div class="row">
@@ -51,8 +52,7 @@
 
 	  <div class="row">
 	  	<div class="large-4 columns">
-	  			<input class="button" type='submit' name='submit' value='Register'>
-	 
+	  		<input class="button" type='submit' name='submit' value='Register'>
 	  	</div>
 	  </div>
 

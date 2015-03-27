@@ -12,19 +12,20 @@ class Registration extends Controller {
 		// View::alertMsg("Submit register");
 		if(isset($_POST['submit'])) {
 			$registration = $this->loadModel('registration_model');
-			
+
 			$registration_success = $registration->registerNewUser(
 				$_POST['firstName'],
 				$_POST['lastName'],
 				$_POST['email'],
 				$_POST['password'],
+				$_POST['verifyPassword'],
 				$_POST['phone'],
 				false);
+			View::alertMsg($registration_success);
+
 			if($registration_success) {
-				View::alertMsg("Registered");
 				url::redirect('user/login');
 			} else {
-				View::alertMsg($data['error']);
 				url::redirect('user/registration');
 			}
 		}

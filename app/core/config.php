@@ -7,7 +7,7 @@ set_error_handler('logger::error_handler');
 // date_default_timezone_set('Europe/London');
 
 //site address
-define('DIR','http://localhost/');
+define('DIR','http://24.215.81.216/');
 
 //database details ONLY NEEDED IF USING A DATABASE
 define('DB_TYPE','mysql');

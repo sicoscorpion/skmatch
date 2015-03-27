@@ -5,6 +5,9 @@
 body {
 	background: url(background3.jpg) !important;
 }
+nav {
+	box-shadow: 2px 7px 10px #888888;
+}
 #wrapper {
 	margin:auto;
 	width:960px;
