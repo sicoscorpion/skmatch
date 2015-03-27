@@ -1,4 +1,12 @@
-# This file is - if you set up HUGE correctly - not needed.
-# But, for fallback reasons (if you don't route your vhost to /public), it will stay here.
-# RewriteEngine on
-# RewriteRule ^(.*) public/$1 [L]
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /
+
+#comment out to keep trailing slashes
+RewriteRule ^(.+)/$ $1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)$ index.php?$1 [QSA,L]
