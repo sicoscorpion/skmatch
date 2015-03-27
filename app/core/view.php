@@ -24,23 +24,26 @@ class View {
 		// echo out positive messages
 		if (isset($feedback_positive) && count($feedback_positive) > 1) {
 		    foreach ($feedback_positive as $feedback) {
-		        echo '<div class="feedback success">'.$feedback.'</div>';
+		        echo '<div data-alert class="alert-box success " class="feedback success">'.$feedback.' <a href="#" class="close">&times;</a></div>';
 		    }
 		} else {
-			echo '<div class="feedback success">'.$feedback_positive[0].'</div>';
+			if (($feedback_positive) != "")
+				echo '<div data-alert class="alert-box success " class="feedback success">'.$feedback_positive[0].'<a href="#" class="close">&times;</a></div>';
 		}
 
 		// echo out negative messages
 		if (isset($feedback_negative) && count($feedback_negative) > 1) {
 		    foreach ($feedback_negative as $feedback) {
-		        echo '<div class="feedback error">'.$feedback.'</div>';
+		        echo '<div data-alert class="alert-box alert " class="feedback error">'.$feedback.'<a href="#" class="close">&times;</a></div>';
 		    }
 		} else {
-			echo '<div class="feedback success">'.$feedback_negative[0].'</div>';
+			if (($feedback_negative) != "")
+				echo '<div data-alert class="alert-box alert " class="feedback error">'.$feedback_negative[0].'<a href="#" class="close">&times;</a></div>';
 		}
         // delete these messages (as they are not needed anymore and we want to avoid to show them twice
         Session::set('feedback_positive', null);
         Session::set('feedback_negative', null);
+
     }
 	
 }

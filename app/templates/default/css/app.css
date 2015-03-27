@@ -74,3 +74,8 @@ table tr:hover {background-color:#F0F0F0; color:#000;}
 #content-divider-large {
 	height: 20px;
 }
+#title {
+  font-variant: small-caps;
+  font-weight: bold;
+  background: lightblue;
+}

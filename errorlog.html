@@ -1,4 +1,158 @@
-<p>Error on Mar 27, 2015 9:06AM - Missing argument 7 for Registration_model::registerNewUser(), called in /home/zeratoul/skmatch/app/controllers/registration.php on line 22 and defined in /home/zeratoul/skmatch/app/models/registration_model.php on line 9</p><p>Error on Mar 27, 2015 8:52AM - Invalid argument supplied for foreach() in /home/zeratoul/skmatch/app/core/view.php on line 26</p><p>Error on Mar 27, 2015 8:52AM - Invalid argument supplied for foreach() in /home/zeratoul/skmatch/app/core/view.php on line 26</p><p>Error on Mar 27, 2015 8:51AM - Invalid argument supplied for foreach() in /home/zeratoul/skmatch/app/core/view.php on line 26</p><h3>Exception information:</h3>
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Mar 27, 2015 14:21PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[HY093]: Invalid parameter number: parameter was not defined</p>
+
+         <p><strong>Code:</strong> HY093</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 103</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(103): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/projects_model.php(29): Database->delete('projects', Array)
+#2 /home/zeratoul/skmatch/app/controllers/user.php(106): Projects_model->deleteProjectById('1')
+#3 /home/zeratoul/skmatch/app/core/router.php(97): User->profile()
+#4 /home/zeratoul/skmatch/index.php(22): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Mar 27, 2015 13:27PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'user@example.com' for key 'email'</p>
+
+         <p><strong>Code:</strong> 23000</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 41</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(41): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/projects_model.php(17): Database->insert('projects', Array)
+#2 /home/zeratoul/skmatch/app/controllers/user.php(98): Projects_model->addNewProject(Array)
+#3 /home/zeratoul/skmatch/app/core/router.php(97): User->profile()
+#4 /home/zeratoul/skmatch/index.php(22): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Mar 27, 2015 13:17PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'headline' in 'field list'</p>
+
+         <p><strong>Code:</strong> 42S22</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 41</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(41): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/projects_model.php(16): Database->insert('projects', Array)
+#2 /home/zeratoul/skmatch/app/controllers/user.php(98): Projects_model->addNewProject(Array)
+#3 /home/zeratoul/skmatch/app/core/router.php(97): User->profile()
+#4 /home/zeratoul/skmatch/index.php(22): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Mar 27, 2015 13:16PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'headline' in 'field list'</p>
+
+         <p><strong>Code:</strong> 42S22</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 41</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(41): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/projects_model.php(16): Database->insert('projects', Array)
+#2 /home/zeratoul/skmatch/app/controllers/user.php(98): Projects_model->addNewProject(Array)
+#3 /home/zeratoul/skmatch/app/core/router.php(97): User->profile()
+#4 /home/zeratoul/skmatch/index.php(22): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Mar 27, 2015 13:14PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email' in 'where clause'</p>
+
+         <p><strong>Code:</strong> 42S22</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 25</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(25): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/projects_model.php(22): Database->select('SELECT * FROM p...', Array)
+#2 /home/zeratoul/skmatch/app/controllers/user.php(87): Projects_model->viewOwnProjects('user@example.co...')
+#3 /home/zeratoul/skmatch/app/core/router.php(97): User->profile()
+#4 /home/zeratoul/skmatch/index.php(22): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Mar 27, 2015 13:14PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email' in 'where clause'</p>
+
+         <p><strong>Code:</strong> 42S22</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 25</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(25): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/projects_model.php(22): Database->select('SELECT * FROM p...', Array)
+#2 /home/zeratoul/skmatch/app/controllers/user.php(87): Projects_model->viewOwnProjects('user@example.co...')
+#3 /home/zeratoul/skmatch/app/core/router.php(97): User->profile()
+#4 /home/zeratoul/skmatch/index.php(22): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Mar 27, 2015 10:39AM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'phone FROM users WHERE email = 'user@example.com'' at line 1</p>
+
+         <p><strong>Code:</strong> 42000</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 25</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(25): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/user_model.php(15): Database->select('SELECT firstNam...', Array)
+#2 /home/zeratoul/skmatch/app/controllers/user.php(61): User_model->getUserInfo('user@example.co...')
+#3 /home/zeratoul/skmatch/app/core/router.php(97): User->profile()
+#4 /home/zeratoul/skmatch/index.php(21): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<p>Error on Mar 27, 2015 10:18AM - Missing argument 2 for Session::set(), called in /home/zeratoul/skmatch/app/controllers/user.php on line 56 and defined in /home/zeratoul/skmatch/app/helpers/session.php on line 16</p><p>Error on Mar 27, 2015 9:06AM - Missing argument 7 for Registration_model::registerNewUser(), called in /home/zeratoul/skmatch/app/controllers/registration.php on line 22 and defined in /home/zeratoul/skmatch/app/models/registration_model.php on line 9</p><p>Error on Mar 27, 2015 8:52AM - Invalid argument supplied for foreach() in /home/zeratoul/skmatch/app/core/view.php on line 26</p><p>Error on Mar 27, 2015 8:52AM - Invalid argument supplied for foreach() in /home/zeratoul/skmatch/app/core/view.php on line 26</p><p>Error on Mar 27, 2015 8:51AM - Invalid argument supplied for foreach() in /home/zeratoul/skmatch/app/core/view.php on line 26</p><h3>Exception information:</h3>
 
          <p><strong>Date:</strong> Mar 27, 2015 8:27AM</p>
 

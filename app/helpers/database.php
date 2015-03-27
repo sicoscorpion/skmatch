@@ -38,7 +38,6 @@ class Database extends PDO{
 		foreach($data as $key => $value){
 			$stmt->bindValue(":$key", $value);
 		}
-		View::alertMsg($stmt);
 		$stmt->execute();		
 
 	}

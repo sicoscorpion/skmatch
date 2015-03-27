@@ -5,8 +5,9 @@
 		<form action="" method="post">
 			<div class="row">
 		    <div class="large-12 columns">
-					<h4 style="font-variant: small-caps;">Login</h4>
-				</div>
+				<h4 style="font-variant: small-caps;">Login</h4>
+				<?php $this->renderFeedbackMessages(); ?>
+			</div>
 			</div>
 			<div class="row">
 		    <div class="large-12 columns">

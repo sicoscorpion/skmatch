@@ -28,7 +28,8 @@
 <div class="row" id="content-divider"></div>
 <div class="row">
 <div class="small-3 small-centered columns">
-	<a class="button" href="/main/index" style="font-variant: small-caps; font-weight: bold;">ENTER SKILZMATCH
+	<a class="button" href="/main/index" style="font-variant: small-caps; font-weight: bold;">
+	ENTER SKILZMATCH
 	</a>
 </div>
 </div>

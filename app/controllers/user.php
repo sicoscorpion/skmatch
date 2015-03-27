@@ -33,11 +33,12 @@ class User extends Controller {
 			$user = $this->loadModel('user_model');
 
 			if(Password::verify($password, $user->get_hash($email)) == false) {
-				$msg = "Invalid login";
-				View::alertMsg($msg);
-				// die('wrong username or password');
+				Session::add('feedback_negative', "Invalid Email or Password");
 			} else {
+				Session::init();
 				Session::set('logedIn',true);
+				Session::set('user_email', $email);
+
 				Url::redirect('user');
 			}
 
@@ -48,6 +49,74 @@ class User extends Controller {
 		$this->view->rendertemplate('header',$data);
 		$this->view->render('user/login',$data);
 		$this->view->rendertemplate('footer',$data);	
+	}
+
+	public function profile() {
+
+		$data['user_email'] = Session::get('user_email');
+		$data['title'] = 'Profile';
+
+		$user = $this->loadModel('user_model');
+		$info = $user->getUserInfo(Session::get('user_email'));
+
+		$data['firstName'] = $info[0]->firstName;
+		$data['lastName'] = $info[0]->lastName;
+		$data['phone'] = $info[0]->phone;
+
+		if(isset($_POST['updateProfile'])){ 
+			$toBeupdated = [];
+
+			if ($_POST['password'] != "") {
+				$toBeupdated['password'] = $_POST['password'];
+				$toBeupdated['verifyPassword'] = $_POST['verifyPassword'];
+			}
+			$toBeupdated['firstName'] = $_POST['firstName'];
+			$toBeupdated['lastName'] = $_POST['lastName'];
+			$toBeupdated['phone'] = $_POST['phone'];
+			$toBeupdated['email'] = Session::get('user_email');
+			$updated = $user->updateUserInfo($toBeupdated);
+
+			if ($updated) {
+				Session::add('feedback_positive', "Updated");
+				url::redirect('user/profile');
+			}
+		}
+
+
+		$projects = $this->loadModel('projects_model');
+		$userProjects = $projects->viewOwnProjects(Session::get('user_email'));
+
+		$data['projectsReturned'] = $userProjects;
+
+		if(isset($_POST['addProject'])){ 
+			$newProject = [];
+
+			$newProject['projectTitle'] = $_POST['projectTitle'];
+			$newProject['description'] = $_POST['description'];
+			$newProject['email'] = Session::get('user_email');
+
+			$projects->addNewProject($newProject);
+			if ($projects) {
+				Session::add('feedback_positive', "Project Added");
+				url::redirect('user/profile');
+			}
+		}
+		// View::alertMsg($_POST['id']);
+		if(isset($_POST['removeProject'])){
+			$toBeDeleted = [];
+
+			$toBeDeleted['id'] = $_POST['id'];
+			$result = $projects->deleteProjectById($toBeDeleted);
+			if ($result) {
+				View::alertMsg("Deleted");
+				Session::add('feedback_positive', "Deleted");
+				url::redirect('user/profile');
+			}
+		} 
+
+		$this->view->rendertemplate('header',$data);
+		$this->view->render('user/profile',$data);
+		$this->view->rendertemplate('footer',$data);
 	}
 
 	public function logout(){

@@ -21,12 +21,11 @@ class Registration extends Controller {
 				$_POST['verifyPassword'],
 				$_POST['phone'],
 				false);
-			View::alertMsg($registration_success);
 
 			if($registration_success) {
 				url::redirect('user/login');
 			} else {
-				url::redirect('user/registration');
+				// url::redirect('user/registration');
 			}
 		}
 
