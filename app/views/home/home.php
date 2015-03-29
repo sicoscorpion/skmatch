@@ -14,7 +14,7 @@
 	undertaking such work.
 	</p>
 </div>
-<div class="row" id="content-divider"></div>
+<!-- <div class="row" id="content-divider"></div>
 <div class="row" id="content-block">
 	<h3 style="font-variant: small-caps; font-weight: bold;">Disclaimer</h3>
   <p>
@@ -24,7 +24,7 @@
 	of the project and end product are that of the parties involved and  
 	not the Skilz Match service.
 	</p>
-</div>
+</div> -->
 <div class="row" id="content-divider"></div>
 <div class="row">
 <div class="small-3 small-centered columns">

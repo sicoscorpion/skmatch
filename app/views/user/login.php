@@ -5,7 +5,7 @@
 		<form action="" method="post">
 			<div class="row">
 		    <div class="large-12 columns">
-				<h4 style="font-variant: small-caps;">Login</h4>
+				<p id="manageBoxTitle">Login</p>
 				<?php $this->renderFeedbackMessages(); ?>
 			</div>
 			</div>

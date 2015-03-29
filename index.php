@@ -15,6 +15,8 @@ Router::post('user/profile', 'user@profile');
 Router::get('main/index', 'main@index');
 Router::get('people/index', 'people@index');
 Router::get('projects/index', 'projects@index');
+Router::get('projects/manage', 'projects@manageProjects');
+Router::post('projects/manage', 'projects@manageProjects');
 //if no route found
 Router::error('error@index');
 

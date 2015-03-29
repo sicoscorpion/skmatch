@@ -1,15 +1,9 @@
 
   <?php $this->renderFeedbackMessages(); ?>
-<script type="text/javascript">
-	var checkContents = setInterval(function(){
-	  if ($("div.alert-box").length > 0){ 
-	  	$("div.alert-box").remove();
-	  }
-	},5000);
-</script>
+
 <div class="row" id="content-divider-large" > </div>
 <div class="row">
-	<div class="small-4 small-centered columns" id="content-block">
+	<div class="small-4 columns" id="content-block">
 		<form action="" method="post">
 		<div class="row">
 	    <div class="large-12 columns">
@@ -62,37 +56,15 @@
 
 		</form>
 	</div>
-</div>
-
-
-<div class="row" id="content-divider-large" > </div>
-
-<?php 
-$this->renderFeedbackMessages();
-	$projects = $data['projectsReturned'];
-	foreach ($projects as $project) {
-		echo '<form action="" method="post"><div class="row">';
-		echo '<input name="id" type="hidden" value='.$project->ID.' />';
-		echo '<div class="panel callout radius">';
-		echo '<h4>'.$project->title.'</h4>';
-		echo '<p>'.$project->description.'</p>';
-		echo '<p>'.date('l jS \of F Y h:i:s A', $project->project_creation_timestamp);
-		$newTime = $project->project_creation_timestamp + 4838400;
-		echo '<i style="text-align: right"> Expires on: </i>'.date('l jS \of F Y h:i:s A', $newTime).'</p>';
-		echo '<input class="button" type="submit" name="removeProject" value="Remove Project">';
-		echo '</div></div></form>';
-	}
-?>
-
-
-<div class="row">
+	<div class="small-7 columns" id="content-block-glass">
+		<div class="row">
 
 	<div class="small-12 small-centered columns" id="content-block">
 		<form action="" method="post">
 		<div class="row">
 	    <div class="large-12 columns">
-			<p><b>Add a Project</b></p>
-			<?php $this->renderFeedbackMessages(); ?>
+			<h4 id="title">People looking for projects</h4>
+			<p><b>List Yourself</b></p>
 		</div>
 	</div>
 
@@ -120,3 +92,6 @@ $this->renderFeedbackMessages();
 		</form>
 	</div>
 </div>
+	</div>
+</div>
+

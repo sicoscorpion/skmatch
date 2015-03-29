@@ -12,14 +12,15 @@
 </div>
 <div class="row" id="content-divider"></div>
 <div class="row ">
-	<!-- <div class="small-1 columns" ></div>  -->
+	 
 	<div class="small-3 columns">
 		<div class="row" id="content-divider"></div>
-		<a class="button" href="/people/index" style="font-variant: small-caps; font-weight: bold;">People Looking For Projects
+		<a class="button" href="/people/index" style="font-variant: small-caps; font-weight: bold;"><span style="font-size: 18px;">People</span>  <br/> Looking For Projects
 			</a>
 	</div>
+	
 	<div class="small-3 columns">
-		<a class="button" href="/projects/index" style="font-variant: small-caps; font-weight: bold;">Projects Looking For People
+		<a class="button" href="/projects/index" style="font-variant: small-caps; font-weight: bold;"><span style="font-size: 18px;">Projects</span> <br/> Looking For People
 		</a>
 	</div>
 </div>

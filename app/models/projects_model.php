@@ -24,9 +24,33 @@ class Projects_model extends Model {
 		$data = $this->_db->select("SELECT * FROM projects WHERE email = :email", array(':email' => $email));
 		return $data;
 	}
+	public function viewPublicProjects() {
+		$data = $this->_db->select("SELECT ID, title, description, project_creation_timestamp FROM projects WHERE approved = :approved", array(':approved' => true));
+		return $data;
+	}
+	public function viewPublicProjectsForUsers() {
+		$data = $this->_db->select("SELECT * FROM projects WHERE approved = :approved", array(':approved' => true));
+		return $data;
+	}
 
 	public function deleteProjectById($project) {
 		$data = $this->_db->delete("projects", $project);
+		return true;
+	}
+
+	public function updateProjectById($project) {
+		if ($project['id'] == "") {
+			return false;
+		}
+
+		$postArray = array(
+			'description' => $project['description'],
+			'title' => $project['title'],
+			'project_creation_timestamp' => time()
+			);
+		$where = array('id' => $project['id']);
+
+		$data = $this->_db->update("projects", $postArray, $where);
 		return true;
 	}
 

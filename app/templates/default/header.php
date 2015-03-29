@@ -10,8 +10,16 @@
 	<script src="<?php echo url::get_template_path();?>javascript/vendor/modernizr.js"></script>
 </head>
 <body>
+  <script type="text/javascript">
+    var checkContents = setInterval(function(){
+      if ($("div.alert-box").length > 0){ 
+        $("div.alert-box").remove();
+      }
+    },5000);
+  </script>
 
-<nav class="top-bar" data-topbar role="navigation">
+<div class="sticky">
+<nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
   <ul class="title-area">
     <li class="name">
       <h1><a href="/">SKILZMATCH</a></h1>
@@ -21,7 +29,17 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-
+      <li class="active"> 
+        <?php if($_SESSION['LogedIn']) {
+          echo '<a href="/projects/manage" >MANAGE PROJECTS</a>';
+          echo '<li class="divider"></li>';
+        } else {
+          $status = "";
+          $link = "";
+        }
+        ?>
+      
+      </li>
       <li class="active"> 
       	<?php if($_SESSION['LogedIn']) {
 	    		$status = "PROFILE";
@@ -51,9 +69,10 @@
     </ul>
 
     <ul class="left">
-      <li class="active"><a href="/main/index">MAIN</a></li>
+      <li class="active"><a href="/main/index">PROJECTS AND PEOPLE</a></li>
     </ul>
 
   </section>
 </nav>
-<!-- <div id='wrapper'> -->
+</div>
+<div id='wrapper'>

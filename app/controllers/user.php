@@ -53,6 +53,10 @@ class User extends Controller {
 
 	public function profile() {
 
+		if(Session::get('logedIn') == false){
+			url::redirect('user/login');
+		}
+
 		$data['user_email'] = Session::get('user_email');
 		$data['title'] = 'Profile';
 
@@ -81,38 +85,6 @@ class User extends Controller {
 				url::redirect('user/profile');
 			}
 		}
-
-
-		$projects = $this->loadModel('projects_model');
-		$userProjects = $projects->viewOwnProjects(Session::get('user_email'));
-
-		$data['projectsReturned'] = $userProjects;
-
-		if(isset($_POST['addProject'])){ 
-			$newProject = [];
-
-			$newProject['projectTitle'] = $_POST['projectTitle'];
-			$newProject['description'] = $_POST['description'];
-			$newProject['email'] = Session::get('user_email');
-
-			$projects->addNewProject($newProject);
-			if ($projects) {
-				Session::add('feedback_positive', "Project Added");
-				url::redirect('user/profile');
-			}
-		}
-		// View::alertMsg($_POST['id']);
-		if(isset($_POST['removeProject'])){
-			$toBeDeleted = [];
-
-			$toBeDeleted['id'] = $_POST['id'];
-			$result = $projects->deleteProjectById($toBeDeleted);
-			if ($result) {
-				View::alertMsg("Deleted");
-				Session::add('feedback_positive', "Deleted");
-				url::redirect('user/profile');
-			}
-		} 
 
 		$this->view->rendertemplate('header',$data);
 		$this->view->render('user/profile',$data);

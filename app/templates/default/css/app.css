@@ -3,14 +3,14 @@
 */
 
 body {
-	background: url(background3.jpg) !important;
+	background: url(background3.jpg) no-repeat center center fixed !important;
 }
 nav {
 	box-shadow: 2px 7px 10px #888888;
 }
 #wrapper {
-	margin:auto;
-	width:960px;
+	margin-bottom: 100px;
+	/*width:960px;*/
 }
 
 
@@ -56,13 +56,26 @@ table tr td {border:1px solid #DDDDDD; padding:5px 6px;}
 table tr.alt td {background-color:#E2E2E2;}
 table tr:hover {background-color:#F0F0F0; color:#000;}
 
+.button {
+	font-variant: small-caps;
+	font-size: 20px;
+}
+
+.button.small{
+	font-variant: small-caps;
+	font-size: 17px !important;
+}
+
 #content-block {
-	/*width: 100%;*/
-	/*height: 200px;*/
 	background: whitesmoke;
 	font-family: monospace;
 	font-size: 16px;
 	text-align: center;
+}
+#content-block-glass {
+	background: black;
+	font-size: 16px;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 #content-block p {
 	padding-top: 2%;
@@ -78,4 +91,24 @@ table tr:hover {background-color:#F0F0F0; color:#000;}
   font-variant: small-caps;
   font-weight: bold;
   background: lightblue;
+}
+
+#manageBoxTitle {
+  font-size: 24px;
+  font-variant: small-caps;
+  font-weight: bold;
+  background-color: lightblue;
+}
+
+#dateBox {
+	background-color: antiquewhite;
+}
+.footer {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  bottom: 0px;
+  text-align: center;
+  background-color: whitesmoke;
+    padding: 2px;
 }

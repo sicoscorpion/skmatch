@@ -4,7 +4,7 @@
 		<form action="" method="post">
 		<div class="row">
 	    <div class="large-12 columns">
-				<h4>Register</h4>
+				<p id="manageBoxTitle">Register</p>
 				<?php $this->renderFeedbackMessages(); ?>
 			</div>
 		</div>
