@@ -7,7 +7,7 @@ class Controller {
 	public function __construct(){
 		// Session::init();
 		$this->view = new view();
-		Self::checkLogin();
+		self::checkLogin();
 	}
 
 	//Display an error page if nothing exists
