@@ -1,4 +1,4 @@
-create database if not exists skilzmatch;
+-- create database if not exists skilzmatch;
 
 use skilzmatch;
 
