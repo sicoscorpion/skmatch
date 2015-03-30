@@ -8,7 +8,7 @@ class Registration_model extends Model {
 	public function registerNewUser($firstName, $lastName, $email, 
 		$password, $verifyPassword, $phone, $admin) {
 
-		if(count(Self::getUserByEmail($email)) != 0 ) {
+		if(count(self::getUserByEmail($email)) != 0 ) {
 			Session::add('feedback_negative', "Email Exists .. choose another email");
 			return false;
 		}
