@@ -1,4 +1,92 @@
-<p>Error on Mar 28, 2015 20:26PM - Invalid argument supplied for foreach() in /home/zeratoul/skmatch/app/views/projects/index.php on line 22</p><h3>Exception information:</h3>
+<p>Error on Apr 05, 2015 21:37PM - require_once(app/vendor/phpmailer/mail.php): failed to open stream: No such file or directory in /home/zeratoul/skmatch/app/helpers/mail.php on line 3</p><p>Error on Apr 05, 2015 21:07PM - require_once(/app/vendor/phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory in /home/zeratoul/skmatch/app/helpers/mail.php on line 3</p><p>Error on Apr 05, 2015 21:06PM - require_once(/app/vendor/phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory in /home/zeratoul/skmatch/app/helpers/mail.php on line 3</p><p>Error on Apr 05, 2015 21:05PM - require_once(/app/vendor/phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory in /home/zeratoul/skmatch/app/helpers/mail.php on line 3</p><p>Error on Apr 05, 2015 21:03PM - require_once(/app/vendor/phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory in /home/zeratoul/skmatch/app/helpers/mail.php on line 3</p><p>Error on Apr 05, 2015 21:01PM - require_once(../vendor/phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory in /home/zeratoul/skmatch/app/helpers/mail.php on line 3</p><h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Apr 05, 2015 19:30PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Unknown column 'title' in 'field list'</p>
+
+         <p><strong>Code:</strong> 42S22</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 25</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(25): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/people_model.php(30): Database->select('SELECT ID, titl...', Array)
+#2 /home/zeratoul/skmatch/app/controllers/people.php(15): People_model->viewPublicPeople()
+#3 /home/zeratoul/skmatch/app/core/router.php(97): People->index()
+#4 /home/zeratoul/skmatch/index.php(28): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Apr 05, 2015 18:35PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'user@example.com' for key 'email'</p>
+
+         <p><strong>Code:</strong> 23000</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 41</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(41): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/people_model.php(19): Database->insert('people', Array)
+#2 /home/zeratoul/skmatch/app/controllers/user.php(111): People_model->addNewPeople(Array)
+#3 /home/zeratoul/skmatch/app/core/router.php(97): User->profile()
+#4 /home/zeratoul/skmatch/index.php(28): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Apr 05, 2015 18:33PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'user@example.com' for key 'email'</p>
+
+         <p><strong>Code:</strong> 23000</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 41</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(41): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/people_model.php(19): Database->insert('people', Array)
+#2 /home/zeratoul/skmatch/app/controllers/user.php(110): People_model->addNewPeople(Array)
+#3 /home/zeratoul/skmatch/app/core/router.php(97): User->profile()
+#4 /home/zeratoul/skmatch/index.php(28): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<h3>Exception information:</h3>
+
+         <p><strong>Date:</strong> Apr 05, 2015 18:20PM</p>
+
+         <p><strong>Message:</strong> SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'user@example.com' for key 'email'</p>
+
+         <p><strong>Code:</strong> 23000</p>
+
+         <p><strong>File:</strong> /home/zeratoul/skmatch/app/helpers/database.php</p>
+
+         <p><strong>Line:</strong> 41</p>
+
+         <h3>Stack trace:</h3>
+
+         <pre>#0 /home/zeratoul/skmatch/app/helpers/database.php(41): PDOStatement->execute()
+#1 /home/zeratoul/skmatch/app/models/people_model.php(19): Database->insert('people', Array)
+#2 /home/zeratoul/skmatch/app/controllers/user.php(105): People_model->addNewPeople(Array)
+#3 /home/zeratoul/skmatch/app/core/router.php(97): User->profile()
+#4 /home/zeratoul/skmatch/index.php(28): Router::dispatch()
+#5 {main}</pre>
+
+         <hr />
+<p>Error on Apr 05, 2015 18:20PM - Missing argument 1 for View::alertMsg(), called in /home/zeratoul/skmatch/app/controllers/user.php on line 95 and defined in /home/zeratoul/skmatch/app/core/view.php on line 5</p><p>Error on Mar 28, 2015 20:26PM - Invalid argument supplied for foreach() in /home/zeratoul/skmatch/app/views/projects/index.php on line 22</p><h3>Exception information:</h3>
 
          <p><strong>Date:</strong> Mar 28, 2015 20:23PM</p>
 

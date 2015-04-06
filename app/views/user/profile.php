@@ -16,19 +16,19 @@
 		<div class="row">
 	    <div class="large-6 columns">
 	      <label>
-	        <input type='text' name='firstName' placeholder="First" value="<?php echo $data['firstName'] ?>"/>
+	        <input type='text' name='firstName' placeholder="First" value="<?php echo $data['firstName'] ?>" required/>
 	      </label>
 	    </div>
 	    <div class="large-6 columns">
 	      <label>
-	        <input type='text' name='lastName' placeholder="Last" value="<?php echo $data['lastName'] ?>"/>
+	        <input type='text' name='lastName' placeholder="Last" value="<?php echo $data['lastName'] ?>" required/>
 	      </label>
 	    </div>
 	  </div>
 	  <div class="row">
 	    <div class="large-12 columns">
 	      <label>
-	        <input type='text' name='phone' placeholder="Phone" value="<?php echo $data['phone'] ?>"/>
+	        <input type='text' name='phone' placeholder="Phone" value="<?php echo $data['phone'] ?>" required/>
 	      </label>
 	    </div>
 	  </div>
@@ -71,21 +71,24 @@
 		<div class="row">
 	    <div class="large-6 columns">
 	      <label>
-	        <input type='text' name='projectTitle' placeholder="Project Title" />
+	        <input type='text' name='headline' placeholder="Your Headline" value="<?php echo $data['headline'] ?>" required/>
 	      </label>
+	    </div>
+	    <div class="large-6 columns">
+	      <input name="listYourself" type="checkbox" value="selected" <?php if($data['approved']) echo "checked";?> ><label for="listYourself">List yourself</label>
 	    </div>
     </div>
     <div class="row">
 	    <div class="large-12 columns">
 	      <label>
-	        <textarea rows='10' name='description' placeholder="Add Project Description Here"></textarea>
+	        <textarea rows='10' name='description' placeholder="Description about your skillz" required><?php echo $data['description']; ?></textarea>
 	      </label>
 	    </div>
 	  </div>
 
 	  <div class="row">
 	  	<div class="large-4 columns">
-	  		<input class="button" type='submit' name='addProject' value='Add Project'>
+	  		<input class="button" type='submit' name='updatePeople' value='Update'>
 	  	</div>
 	  </div>
 

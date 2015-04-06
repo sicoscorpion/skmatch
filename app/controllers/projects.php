@@ -41,8 +41,8 @@ class Projects extends Controller {
 		if(isset($_POST['addProject'])){ 
 			$newProject = [];
 
-			$newProject['projectTitle'] = $_POST['projectTitle'];
-			$newProject['description'] = $_POST['description'];
+			$newProject['projectTitle'] = filter_var($_POST['projectTitle'], FILTER_SANITIZE_STRING);
+			$newProject['description'] = filter_var($_POST['description'], FILTER_SANITIZE_STRING);
 			$newProject['email'] = Session::get('user_email');
 
 			$projects->addNewProject($newProject);
@@ -68,8 +68,8 @@ class Projects extends Controller {
 			$currentProject = [];
 
 			$currentProject['id'] = $_POST['id'];	
-			$currentProject['title'] = $_POST['newProjectTitle'];
-			$currentProject['description'] = $_POST['newDescription'];
+			$currentProject['title'] = filter_var($_POST['newProjectTitle'], FILTER_SANITIZE_STRING);
+			$currentProject['description'] = filter_var($_POST['newDescription'], FILTER_SANITIZE_STRING);
 
 			$result = $projects->updateProjectById($currentProject);
 			

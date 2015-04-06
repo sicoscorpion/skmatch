@@ -57,6 +57,7 @@ class User extends Controller {
 			url::redirect('user/login');
 		}
 
+		// Belongs to user model
 		$data['user_email'] = Session::get('user_email');
 		$data['title'] = 'Profile';
 
@@ -74,9 +75,9 @@ class User extends Controller {
 				$toBeupdated['password'] = $_POST['password'];
 				$toBeupdated['verifyPassword'] = $_POST['verifyPassword'];
 			}
-			$toBeupdated['firstName'] = $_POST['firstName'];
-			$toBeupdated['lastName'] = $_POST['lastName'];
-			$toBeupdated['phone'] = $_POST['phone'];
+			$toBeupdated['firstName'] = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
+			$toBeupdated['lastName'] = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
+			$toBeupdated['phone'] = preg_replace('/[^0-9]/', '', $_POST['phone']);
 			$toBeupdated['email'] = Session::get('user_email');
 			$updated = $user->updateUserInfo($toBeupdated);
 
@@ -85,6 +86,44 @@ class User extends Controller {
 				url::redirect('user/profile');
 			}
 		}
+		// end
+
+		// Belongs to people model
+		$people = $this->loadModel('people_model');
+		$peopleListing = $people->viewOwnPeople(Session::get('user_email'));
+		
+		$data['headline'] = $peopleListing[0]->headline;
+		$data['description'] = $peopleListing[0]->description;
+		$data['approved'] = $peopleListing[0]->approved;
+
+		if(isset($_POST['updatePeople'])){
+			$newPeople = [];
+
+			$newPeople['headline'] = filter_var($_POST['headline'], FILTER_SANITIZE_STRING);
+			$newPeople['description'] = filter_var($_POST['description'], FILTER_SANITIZE_STRING);
+			if ($_POST['listYourself'])
+				$newPeople['approved'] = true;
+			else
+				$newPeople['approved'] = false;
+
+			var_dump($_POST['listYourself']);
+			if ($peopleListing[0]->email) {
+				$newPeople['id'] = $peopleListing[0]->ID;
+				$people->updatePeopleById($newPeople);
+			} else {
+				$newPeople['email'] = Session::get('user_email');
+				$people->addNewPeople($newPeople);
+			}
+
+			
+			if ($people) {
+				Session::add('feedback_positive', " - PENDING APPROVAL");
+				url::redirect('user/profile');
+			}
+		}
+
+
+		//end
 
 		$this->view->rendertemplate('header',$data);
 		$this->view->render('user/profile',$data);

@@ -12,6 +12,10 @@ Router::get('user/registration', 'registration@register');
 Router::post('user/registration', 'registration@register');
 Router::get('user/profile', 'user@profile');
 Router::post('user/profile', 'user@profile');
+
+// Router::get('user/profile', 'user@updatePeople');
+// Router::post('user/profile', 'user@updatePeople');
+
 Router::get('main/index', 'main@index');
 Router::get('people/index', 'people@index');
 Router::get('projects/index', 'projects@index');

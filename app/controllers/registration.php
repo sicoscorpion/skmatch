@@ -14,12 +14,12 @@ class Registration extends Controller {
 			$registration = $this->loadModel('registration_model');
 
 			$registration_success = $registration->registerNewUser(
-				$_POST['firstName'],
-				$_POST['lastName'],
+				filter_var($_POST['firstName'], FILTER_SANITIZE_STRING),
+				filter_var($_POST['lastName'], FILTER_SANITIZE_STRING),
 				$_POST['email'],
 				$_POST['password'],
 				$_POST['verifyPassword'],
-				$_POST['phone'],
+				preg_replace('/[^0-9]/', '', $_POST['phone']),
 				false);
 
 			if($registration_success) {

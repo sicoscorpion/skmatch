@@ -7,7 +7,8 @@ class Registration_model extends Model {
 
 	public function registerNewUser($firstName, $lastName, $email, 
 		$password, $verifyPassword, $phone, $admin) {
-
+		View::alertMsg($email);
+		var_dump($email);
 		if(count(self::getUserByEmail($email)) != 0 ) {
 			Session::add('feedback_negative', "Email Exists .. choose another email");
 			return false;
@@ -26,6 +27,8 @@ class Registration_model extends Model {
 			'password' => $hash,
 			'phone' => $phone,
 			'admin' => $admin));
+
+		self::sendVerificationEmail($email);
 		return true;
 	}
 	
@@ -45,6 +48,21 @@ class Registration_model extends Model {
 		return false;
 	}
 
+	public static function sendVerificationEmail($user_email)
+	{
+		$body = "Thank you for your registration!";
 
+		$mail = new Mail;
+		$mail_sent = $mail->sendMail($user_email, "www-data@acadiau.ca",
+			"Skillzmatch", "Account Verification", $body);
+
+		if ($mail_sent == 1) {
+			Session::add('feedback_positive', "Mail Sent!");
+			return true;
+		} else {
+			Session::add('feedback_negative', "Mail not sent" . $mail->getError() );
+			return false;
+		}
+	}
     
 }

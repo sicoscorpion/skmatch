@@ -10,7 +10,7 @@
 <div class="row">
 
 	<div class="small-12 small-centered columns" id="content-block">
-		<form action="" method="post">
+		<form action="" method="post" >
 		<div class="row">
 	    <div class="large-12 columns">
 			<p style="font-size: 24px; font-variant: small-caps; font-weight: bold;">Add a Project</p>
@@ -20,21 +20,21 @@
 		<div class="row">
 	    <div class="large-6 columns">
 	      <label>
-	        <input type='text' name='projectTitle' placeholder="Project Title" />
+	        <input type='text' name='projectTitle' placeholder="Project Title" required/>
 	      </label>
 	    </div>
     </div>
     <div class="row">
 	    <div class="large-12 columns">
 	      <label>
-	        <textarea rows='10' name='description' placeholder="Add Project Description Here"></textarea>
+	        <textarea rows='10' name='description' placeholder="Add Project Description Here" required></textarea>
 	      </label>
 	    </div>
 	  </div>
 
 	  <div class="row">
 	  	<div class="large-4 columns">
-	  		<input class="button" type='submit' name='addProject' value='Add Project'>
+	  		<input class="button" type='submit' name='addProject' value='Add Project' onclick="return confirm('Are you sure?');">
 	  	</div>
 	  </div>
 
@@ -50,7 +50,7 @@
 
 	$projects = $data['projectsReturned'];
 	foreach ($projects as $project) {
-		echo '<form action="" method="post"><div class="row">';
+		echo '<form action="" method="post" ><div class="row">';
 		echo '<input name="id" type="hidden" value='.$project->ID.' />';
 		echo '<div class="panel callout radius">';
 		echo '<p id="manageBoxTitle">'.$project->title.'</p>';
@@ -58,7 +58,7 @@
 		echo '<p>Created On: '.date('l jS \of F Y h:i:s A', $project->project_creation_timestamp).'<br />';
 		$newTime = $project->project_creation_timestamp + 4838400;
 		echo 'Expires on: </i>'.date('l jS \of F Y h:i:s A', $newTime).'</p>';
-		echo '<input class="button small" type="submit" name="removeProject" value="Remove Project" />';
+		echo '<input class="button small" type="submit" name="removeProject" value="Remove Project" onclick="return confirm(\'Are you sure?\');"/>';
 		echo '<span>   </span><a data-reveal-id="editProjectForm'.$project->ID.'" class="button small" >Edit Projects</a>';
 		echo '</div></div></form>';
 ?>
@@ -68,14 +68,14 @@
 			<div class="row">
 		    <div class="large-6 columns">
 		      <label>
-		        <input type='text' name='newProjectTitle' value="<?php echo $project->title; ?>" />
+		        <input type='text' name='newProjectTitle' value="<?php echo $project->title; ?>" required/>
 		      </label>
 		    </div>
 	    </div>
 	    <div class="row">
 		    <div class="large-12 columns">
 		      <label>
-		        <textarea rows='10' name='newDescription' ><?php echo $project->description; ?></textarea>
+		        <textarea rows='10' name='newDescription' required><?php echo $project->description; ?></textarea>
 		      </label>
 		    </div>
 	 		</div>
