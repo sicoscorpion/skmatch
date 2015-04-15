@@ -49,6 +49,13 @@ class User_model extends Model {
 		return true;
 	}
 
+	public function forgotPasswordAction($posted) {
+		$count = $this->_db->select("SELECT COUNT(*) FROM sent_emails WHERE email_address = 
+			:email_address AND timestamp >= :time", array(':email_address' => $posted['hash'], ':time' => $posted['time_formatted']));
+		$exists = self::getUserInfo($email);
+		var_dump($exists);
+	}
+
 	public static function updateInputValidation($user_password_new, $user_password_repeat)
 	{
         // if username, email and password are all correctly validated

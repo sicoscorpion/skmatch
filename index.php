@@ -15,7 +15,9 @@ Router::post('user/profile', 'user@profile');
 
 Router::get('user/admin', 'admin@manage');
 Router::post('user/admin', 'admin@manage');
-// Router::post('user/profile', 'user@updatePeople');
+
+Router::get('user/forgot_password', 'user@forgotPassword');
+Router::post('user/forgot_password', 'user@forgotPassword');
 
 Router::get('main/index', 'main@index');
 Router::get('people/index', 'people@index');

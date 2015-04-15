@@ -29,7 +29,8 @@
 		  	</div>
 		  </div>
 		  <div class="row" style="background-color: lightgrey;">
-		  	<em> Not a user? <a href="/user/registration">Register</a></em>
+		  	<em> Not a user? <a href="/user/registration">Register</a></em><br />
+		  	<em> Forgot Password? <a href="/user/forgot_password">Click here</a></em>
 		  </div>
 		</form>
 	</div>

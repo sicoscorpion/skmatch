@@ -53,6 +53,27 @@ class User extends Controller {
 		$this->view->render('user/login',$data);
 		$this->view->rendertemplate('footer',$data);	
 	}
+	public function forgotPassword(){
+
+		$user = $this->loadModel('user_model');
+		if(isset($_POST['submit'])){
+
+			if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+				$posted = [];
+				$posted['hash'] = hash('sha256', $_POST['email']);
+				$posted['email'] = $_POST['email'];
+        $time = new DateTime('24 hours ago');   
+        $posted['time_formatted'] = $time->format('Y-m-d H:i:s');
+        
+        $processed = $user->forgotPasswordAction($posted);
+
+			}     
+		}
+
+		$this->view->rendertemplate('header',$data);
+		$this->view->render('user/forgot_password',$data);
+		$this->view->rendertemplate('footer',$data);
+	}
 
 	public function profile() {
 

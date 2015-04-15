@@ -6,6 +6,8 @@ use skilzmatch;
 DROP TABLE IF EXISTS `users`;
 DROP TABLE IF EXISTS `people`;
 DROP TABLE IF EXISTS `projects`;
+DROP TABLE if exists responses;
+DROP TABLE if exists sent_emails;
 
 CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -16,7 +18,24 @@ CREATE TABLE `users` (
   `phone` varchar(30) not NULL,
   `admin` BOOL NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE responses (
+  reset_key char(32) NOT NULL,
+  user varchar(128) not NULL,
+  secret char(60) NOT NULL,
+  request_timestamp datetime NOT NULL,
+  request_ip varchar(39) NOT NULL,
+  email_address char(64) NOT NULL,
+  used tinyint(1) NOT NULL DEFAULT '0',
+  active tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (reset_key)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE sent_emails (
+  email_address char(64) NOT NULL,
+  timestamp datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE people (
   ID int(11) not NULL auto_increment,
