@@ -18,7 +18,7 @@ class User extends Controller {
 		$this->view->render('main/index',$data);
 		$this->view->rendertemplate('footer',$data);	
 	}
-
+	
 	public function login(){
 
 		if(Session::get('logedIn') == true){
@@ -38,7 +38,10 @@ class User extends Controller {
 				Session::init();
 				Session::set('logedIn',true);
 				Session::set('user_email', $email);
-
+				if(count($user->checkAdmin($email)) == 1) {
+					Session::add('feedback_positive', "IAM A KINGSSSSSSSSSSSSSSS");
+					Session::set('admin', true);
+				}
 				Url::redirect('user');
 			}
 
@@ -94,7 +97,7 @@ class User extends Controller {
 		
 		$data['headline'] = $peopleListing[0]->headline;
 		$data['description'] = $peopleListing[0]->description;
-		$data['approved'] = $peopleListing[0]->approved;
+		$data['listed'] = $peopleListing[0]->listed;
 
 		if(isset($_POST['updatePeople'])){
 			$newPeople = [];
@@ -102,9 +105,9 @@ class User extends Controller {
 			$newPeople['headline'] = filter_var($_POST['headline'], FILTER_SANITIZE_STRING);
 			$newPeople['description'] = filter_var($_POST['description'], FILTER_SANITIZE_STRING);
 			if ($_POST['listYourself'])
-				$newPeople['approved'] = true;
+				$newPeople['listed'] = true;
 			else
-				$newPeople['approved'] = false;
+				$newPeople['listed'] = false;
 
 			var_dump($_POST['listYourself']);
 			if ($peopleListing[0]->email) {

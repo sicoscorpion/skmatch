@@ -75,7 +75,7 @@
 	      </label>
 	    </div>
 	    <div class="large-6 columns">
-	      <input name="listYourself" type="checkbox" value="selected" <?php if($data['approved']) echo "checked";?> ><label for="listYourself">List yourself</label>
+	      <input name="listYourself" type="checkbox" value="selected" <?php if($data['listed']) echo "checked";?> ><label for="listYourself">List yourself</label>
 	    </div>
     </div>
     <div class="row">

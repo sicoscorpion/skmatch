@@ -22,6 +22,7 @@ CREATE TABLE people (
   ID int(11) not NULL auto_increment,
   description varchar(10000) not NULL, 
   headline varchar(128) not NULL,
+  listed BOOL not NULL,
   approved BOOL not NULL,
   email varchar(128) UNIQUE not NULL,
   people_creation_timestamp bigint(20) not NULL,

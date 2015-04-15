@@ -30,6 +30,17 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <li class="active"> 
+        <?php if($_SESSION['LogedIn'] && isset($_SESSION['admin'])) {
+          echo '<a href="/user/admin" >ADMIN</a>';
+          echo '<li class="divider"></li>';
+        } else {
+          $status = "";
+          $link = "";
+        }
+        ?>
+      
+      </li>
+      <li class="active"> 
         <?php if($_SESSION['LogedIn']) {
           echo '<a href="/projects/manage" >MANAGE PROJECTS</a>';
           echo '<li class="divider"></li>';

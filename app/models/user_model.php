@@ -16,6 +16,13 @@ class User_model extends Model {
 		return $data;
 	}
 
+	public function checkAdmin($email)
+	{
+		$data = $this->_db->select("SELECT * FROM users WHERE email = :email AND admin = :admin", array(':email' => $email, ':admin' => true));
+		return $data;
+	}
+			
+
 	public function updateUserInfo($data){
 		if ($data['password'] != "") {
 			$validation_result = self::updateInputValidation($data['password'], $data['verifyPassword']);

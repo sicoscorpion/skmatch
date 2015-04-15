@@ -13,7 +13,8 @@ Router::post('user/registration', 'registration@register');
 Router::get('user/profile', 'user@profile');
 Router::post('user/profile', 'user@profile');
 
-// Router::get('user/profile', 'user@updatePeople');
+Router::get('user/admin', 'admin@manage');
+Router::post('user/admin', 'admin@manage');
 // Router::post('user/profile', 'user@updatePeople');
 
 Router::get('main/index', 'main@index');

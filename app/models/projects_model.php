@@ -10,7 +10,7 @@ class Projects_model extends Model {
 		$toBePosted	= array(
 			'description' => $data['description'],
 			'title' => $data['projectTitle'],
-			'approved' => true,
+			'approved' => false,
 			'email' => $data['email'],
 			'project_creation_timestamp' => time()
 			);
@@ -32,6 +32,25 @@ class Projects_model extends Model {
 		$data = $this->_db->select("SELECT * FROM projects WHERE approved = :approved", array(':approved' => true));
 		return $data;
 	}
+	public function viewProjectsForAdmin() {
+		$data = $this->_db->select("SELECT * FROM projects WHERE approved = :approved", array(':approved' => false));
+		return $data;
+	}
+
+	public function updateProjectByAdmin($project) {
+		if ($project['id'] == "") {
+			return false;
+		}
+
+		$postArray = array(
+			'approved' => true,
+			'project_creation_timestamp' => time()
+			);
+		$where = array('id' => $project['id']);
+
+		$data = $this->_db->update("projects", $postArray, $where);
+		return true;
+	}
 
 	public function deleteProjectById($project) {
 		$data = $this->_db->delete("projects", $project);
@@ -46,6 +65,7 @@ class Projects_model extends Model {
 		$postArray = array(
 			'description' => $project['description'],
 			'title' => $project['title'],
+			'approved' => false,
 			'project_creation_timestamp' => time()
 			);
 		$where = array('id' => $project['id']);
