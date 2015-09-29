@@ -52,7 +52,26 @@ class People_model extends Model {
 			);
 		$where = array('id' => $data['id']);
 
-		$data = $this->_db->update("people", $postArray, $where);
+		$res = $this->_db->update("people", $postArray, $where);
+
+		$mail_to      = $data['email'];  
+    $mail_subject = 'Profile ' . $data['headline'] . ' Approved';  
+    $mail_body = "Hello, 
+      <br><br> 
+      Your Profile, headlined: ". $data['headline']. ", has been approved.<br> 
+      You can see it in action at http://skilzmatch.acadiau.ca/people/index.<br><br>
+      Best regards, 
+      <br><br> 
+      skilzmatch.acadiau.ca";
+    $mail = new Mail;
+		$mail_sent = $mail->sendMail($mail_to, "www-data@acadiau.ca", "People-Skillzmatch", $mail_subject, $mail_body);
+
+		if ($mail_sent == 1) {
+			return true;
+		} else {
+			Session::add('feedback_negative', "Mail not sent" . $data );
+			return false;
+		}
 		return true;
 	}
 
@@ -65,7 +84,7 @@ class People_model extends Model {
 		if ($data['id'] == "") {
 			return false;
 		}
-
+		// Session::add('feedback_positive', $data['listed']);
 		$postArray = array(
 			'description' => $data['description'],
 			'headline' => $data['headline'],
@@ -74,8 +93,34 @@ class People_model extends Model {
 			'people_creation_timestamp' => time()
 			);
 		$where = array('id' => $data['id']);
+		$res = $this->_db->update("people", $postArray, $where);
 
-		$data = $this->_db->update("people", $postArray, $where);
+		if($data['listed']) {
+			$mail_to      = "skilzmatch@acadiau.ca";  
+	    $mail_subject = 'Person listing ' . $data['id'] . ' Updated';  
+	    $mail_body = "Hello, 
+	      <br><br> 
+	      Someone updated their listing at http://skilzmatch.acadiau.ca/user/admin. 
+	      <br><br> 
+	      Headline: " . $data['headline'] . "
+	      <br><br> 
+	      Description: " . $data['description'] . "
+	      <br><br>
+	      Best regards, 
+	      <br><br> 
+	      skilzmatch.acadiau.ca";
+	    $mail = new Mail;
+			$mail_sent = $mail->sendMail($mail_to, "www-data@acadiau.ca", "People-Skillzmatch", $mail_subject, $mail_body);
+
+			if ($mail_sent == 1) {
+				return true;
+			} else {
+				Session::add('feedback_negative', "Mail not sent" . $mail->getError() );
+				return false;
+			}
+		}
+
+		
 		return true;
 	}
 }

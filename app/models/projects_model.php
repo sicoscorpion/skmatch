@@ -17,6 +17,29 @@ class Projects_model extends Model {
 
 		$result = $this->_db->insert("projects", $toBePosted);
 
+		$mail_to      = "skilzmatch@acadiau.ca";  
+    $mail_subject = 'New Project Added';  
+    $mail_body = "Hello, 
+      <br><br> 
+      Someone added a new project at http://skilzmatch.acadiau.ca/user/admin. 
+      <br><br> 
+      Title: " . $data['projectTitle'] . "
+      <br><br> 
+      Description: " . $data['description'] . "
+      <br><br>
+      Best regards, 
+      <br><br> 
+      skilzmatch.acadiau.ca";
+    $mail = new Mail;
+		$mail_sent = $mail->sendMail($mail_to, "www-data@acadiau.ca", "Projects-Skillzmatch", $mail_subject, $mail_body);
+
+		if ($mail_sent == 1) {
+			return true;
+		} else {
+			// Session::add('feedback_negative', "Mail not sent" . $mail->getError() );
+			return false;
+		}
+
 		return true;
 	}
 
@@ -49,6 +72,24 @@ class Projects_model extends Model {
 		$where = array('id' => $project['id']);
 
 		$data = $this->_db->update("projects", $postArray, $where);
+		$mail_to      = $project['email'];  
+    $mail_subject = 'Project ' . $project['title'] . ' Approved';  
+    $mail_body = "Hello, 
+      <br><br> 
+      Your project, titled: ". $project['title']. ", has been approved.<br> 
+      You can see it in action at http://skilzmatch.acadiau.ca/projects/index.<br><br>
+      Best regards, 
+      <br><br> 
+      skilzmatch.acadiau.ca";
+    $mail = new Mail;
+		$mail_sent = $mail->sendMail($mail_to, "www-data@acadiau.ca", "Projects-Skillzmatch", $mail_subject, $mail_body);
+
+		if ($mail_sent == 1) {
+			return true;
+		} else {
+			Session::add('feedback_negative', "Mail not sent" . $project['email'] );
+			return false;
+		}
 		return true;
 	}
 
@@ -71,6 +112,29 @@ class Projects_model extends Model {
 		$where = array('id' => $project['id']);
 
 		$data = $this->_db->update("projects", $postArray, $where);
+
+		$mail_to      = "skilzmatch@acadiau.ca";  
+    $mail_subject = 'Project ' . $project['id'] . ' Updated';  
+    $mail_body = "Hello, 
+      <br><br> 
+      Someone updated their project at http://skilzmatch.acadiau.ca/user/admin. 
+      <br><br> 
+      Title: " . $data['projectTitle'] . "
+      <br><br> 
+      Description: " . $data['description'] . "
+      <br><br>
+      Best regards, 
+      <br><br> 
+      skilzmatch.acadiau.ca";
+    $mail = new Mail;
+		$mail_sent = $mail->sendMail($mail_to, "www-data@acadiau.ca", "Projects-Skillzmatch", $mail_subject, $mail_body);
+
+		if ($mail_sent == 1) {
+			return true;
+		} else {
+			Session::add('feedback_negative', "Mail not sent" . $mail->getError() );
+			return false;
+		}
 		return true;
 	}
 

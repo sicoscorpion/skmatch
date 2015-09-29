@@ -10,7 +10,7 @@ class Registration extends Controller {
 
 		$data['title'] = 'Registration';
 		// View::alertMsg("Submit register");
-		if(isset($_POST['submit'])) {
+		if(isset($_POST['submit']) && $_POST['Country'] == "banana" ) {
 			$registration = $this->loadModel('registration_model');
 
 			$registration_success = $registration->registerNewUser(
@@ -23,6 +23,14 @@ class Registration extends Controller {
 				false);
 
 			if($registration_success) {
+				$user = $this->loadModel('user_model');
+				Session::init();
+				Session::set('logedIn',true);
+				Session::set('user_email', $_POST['email']);
+				if(count($user->checkAdmin($_POST['email'])) == 1) {
+					// Session::add('feedback_positive', "IAM A KINGSSSSSSSSSSSSSSS");
+					Session::set('admin', true);
+				}
 				url::redirect('user/login');
 			} else {
 				// url::redirect('user/registration');

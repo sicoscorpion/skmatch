@@ -1,8 +1,19 @@
 <!DOCTYPE html>
-<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+
 <html class="no-js" lang="en" >
 <head>
-	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <?php
+    // //set headers to NOT cache a page
+    // header("Cache-Control: cache, must-revalidate"); //HTTP 1.1
+    // header("Pragma: cache"); //HTTP 1.0
+    // header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+
+    // //or, if you DO want a file to cache, use:
+    // header("Cache-Control: max-age=2592000"); //30days (60sec * 60min * 24hours * 30days)
+
+  ?>
 	<title><?php echo $data['title'] ?></title>
 	<link href="<?php echo url::get_template_path();?>css/app.css" rel="stylesheet">
 	<link href="<?php echo url::get_template_path();?>css/foundation.css" rel="stylesheet">
@@ -15,7 +26,7 @@
       if ($("div.alert-box").length > 0){ 
         $("div.alert-box").remove();
       }
-    },5000);
+    },3000);
   </script>
 
 <div class="sticky">
@@ -80,7 +91,11 @@
     </ul>
 
     <ul class="left">
-      <li class="active"><a href="/main/index">PROJECTS AND PEOPLE</a></li>
+      <li class="active"><a href="/projects/index">PROJECTS</a></li>
+      <li class="divider"></li>
+      <li class="active"><a href="/people/index">PEOPLE</a></li>
+      <li class="divider"></li>
+      <li class="active"><a href="/contact">CONTACT US</a></li>
     </ul>
 
   </section>

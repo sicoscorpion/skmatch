@@ -14,6 +14,13 @@ class Database extends PDO{
 		}
 
 	}
+	public function exec($sql, $data) {
+		$stmt = $this->prepare($sql);
+		// foreach($data as $key => $value){
+		// 	$stmt->bindValue(":$key", $value);
+		// }
+		$stmt->execute($data);
+	}
 
 	public function select($sql,$array = array(), $fetchMode = PDO::FETCH_OBJ){
 

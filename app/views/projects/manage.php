@@ -34,7 +34,7 @@
 
 	  <div class="row">
 	  	<div class="large-4 columns">
-	  		<input class="button" type='submit' name='addProject' value='Add Project' onclick="return confirm('Are you sure?');">
+	  		<input class="button" type='submit' name='addProject' value='Add Project' onclick="return confirm('Are you sure you would like to submit the project? Project will be listed for 8 weeks after approval.');">
 	  	</div>
 	  </div>
 
@@ -79,7 +79,7 @@
 		      </label>
 		    </div>
 	 		</div>
-	 		<input class="button small" type="submit" name="editProject" value="Edit Project"/>
+	 		<input class="button small" type="submit" name="editProject" value="Edit Project" onclick="return confirm('Updating your project will remove it from the public page until it is reapproved...  Are you sure?');"/>
 		</form>
 		<a class="close-reveal-modal" aria-label="Close">&#215;</a>
 		</div>

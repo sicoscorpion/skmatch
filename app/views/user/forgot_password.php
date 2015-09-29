@@ -1,13 +1,16 @@
-<div class="small-12 row">
-  <fieldset>
+<?php $this->renderFeedbackMessages(); ?>
+
+<div class="row" id="content-divider-large"></div>
+<div class="small-12 row" id="content-block-glass">
+<div class="row" id="content-divider-large"></div>
     <form action="" method="post">
       <div class="small-10 column">
-        <label>
+        
           <input type="text" name="email" placeholder="Email Address" />
-        </label>
+        
       </div>
       <div class="small-4 column">
-        <label><br/><input type="submit" name='submit' class="button [tiny tiny small radius round] center" value="Recover" /> </label>
+        <input type="submit" name='submit' class="button [small small small] center" value="Recover" /> 
       </div>
-  </fieldset>
+
 </div>

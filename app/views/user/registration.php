@@ -48,7 +48,10 @@
 	      </label>
 	    </div>
 	  </div>
-
+	  <div style="display: none">
+            If you can read this, don't touch the following text field.<br>
+            <input type="text" name="Country" value="banana"><br>
+          </div>
 
 	  <div class="row">
 	  	<div class="large-4 columns">

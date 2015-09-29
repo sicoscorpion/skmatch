@@ -39,10 +39,10 @@ class User extends Controller {
 				Session::set('logedIn',true);
 				Session::set('user_email', $email);
 				if(count($user->checkAdmin($email)) == 1) {
-					Session::add('feedback_positive', "IAM A KINGSSSSSSSSSSSSSSS");
+					// Session::add('feedback_positive', "IAM A KINGSSSSSSSSSSSSSSS");
 					Session::set('admin', true);
 				}
-				Url::redirect('user');
+				Url::redirect('');
 			}
 
 		}
@@ -75,6 +75,37 @@ class User extends Controller {
 		$this->view->rendertemplate('footer',$data);
 	}
 
+	public function passwordReset() {
+
+		$user = $this->loadModel('user_model');
+
+		$data['reset_key'] = $_GET["reset_key"]; 
+		$data['email_address'] = $_GET["email"];
+		$data['password_token'] = $_GET["password_token"];
+
+
+		if(isset($_POST['submit'])){
+			$reset_key = $_POST['reset_key'];  
+      $email_address = $_GET["email"];  
+      $password_token = $_POST['password_token'];
+
+      $result = $user->resetPasswordAction(
+      	$reset_key, 
+      	$email_address, 
+      	$password_token,
+      	$_POST['password'],
+      	$_POST['verifyNewPass']);
+      if ($result) {
+				Session::add('feedback_positive', "Updated");
+				url::redirect('user/login');
+			}
+      // var_dump($result);
+		}
+
+		$this->view->rendertemplate('header',$data);
+		$this->view->render('user/password_reset',$data);
+		$this->view->rendertemplate('footer',$data);
+	}
 	public function profile() {
 
 		if(Session::get('logedIn') == false){
@@ -121,16 +152,19 @@ class User extends Controller {
 		$data['listed'] = $peopleListing[0]->listed;
 
 		if(isset($_POST['updatePeople'])){
+
 			$newPeople = [];
 
 			$newPeople['headline'] = filter_var($_POST['headline'], FILTER_SANITIZE_STRING);
 			$newPeople['description'] = filter_var($_POST['description'], FILTER_SANITIZE_STRING);
-			if ($_POST['listYourself'])
-				$newPeople['listed'] = true;
-			else
-				$newPeople['listed'] = false;
 
-			var_dump($_POST['listYourself']);
+			if ($_POST['listYourself'] == "selected") {
+				$newPeople['listed'] = true;
+			} else {
+				$newPeople['listed'] = false;
+			}
+
+			
 			if ($peopleListing[0]->email) {
 				$newPeople['id'] = $peopleListing[0]->ID;
 				$people->updatePeopleById($newPeople);
@@ -141,7 +175,7 @@ class User extends Controller {
 
 			
 			if ($people) {
-				Session::add('feedback_positive', " - PENDING APPROVAL");
+				Session::add('feedback_positive', "UPDATED - PENDING APPROVAL");
 				url::redirect('user/profile');
 			}
 		}
@@ -155,7 +189,9 @@ class User extends Controller {
 	}
 
 	public function logout(){
-
+		Session::set('admin', false);
+		Session::set('user_email', null);
+		Session::set('logedIn', false);
 		Session::destroy();
 		Url::redirect('user');
 

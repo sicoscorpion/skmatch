@@ -3,7 +3,7 @@ require('app/core/autoloader.php');
 
 //define routes
 Router::get('', 'home@index');
-Router::get('show', 'home@show');
+Router::get('contact', 'home@contact');
 Router::get('user', 'user@user');
 Router::get('user/login', 'user@login');
 Router::post('user/login', 'user@login');
@@ -18,6 +18,9 @@ Router::post('user/admin', 'admin@manage');
 
 Router::get('user/forgot_password', 'user@forgotPassword');
 Router::post('user/forgot_password', 'user@forgotPassword');
+
+Router::get('user/password_reset', 'user@passwordReset');
+Router::post('user/password_reset', 'user@passwordReset');
 
 Router::get('main/index', 'main@index');
 Router::get('people/index', 'people@index');

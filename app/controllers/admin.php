@@ -20,6 +20,8 @@ class Admin extends Controller {
 		if(isset($_POST['approveProject'])){
 			$currentProject = [];
 			$currentProject['id'] = $_POST['id'];
+			$currentProject['email'] = $_POST['email'];
+			$currentProject['title'] = $_POST['title'];
 
 			$result = $projects->updateProjectByAdmin($currentProject);
 			
@@ -46,6 +48,8 @@ class Admin extends Controller {
 		if(isset($_POST['approvePerson'])){
 			$currentPerson = [];
 			$currentPerson['id'] = $_POST['id'];
+			$currentPerson['email'] = $_POST['email'];
+			$currentPerson['headline'] = $_POST['headline'];
 
 			$result = $people->updatePeopleByAdmin($currentPerson);
 			

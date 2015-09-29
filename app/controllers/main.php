@@ -11,7 +11,7 @@ class Main extends Controller {
 		$data['title'] = 'Main';
 
 		$this->view->rendertemplate('header',$data);
-		$this->view->render('main/index',$data);
+		$this->view->render('home/home',$data);
 		$this->view->rendertemplate('footer',$data);
 	}
 }

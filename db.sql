@@ -22,7 +22,6 @@ CREATE TABLE `users` (
 
 CREATE TABLE responses (
   reset_key char(32) NOT NULL,
-  user varchar(128) not NULL,
   secret char(60) NOT NULL,
   request_timestamp datetime NOT NULL,
   request_ip varchar(39) NOT NULL,

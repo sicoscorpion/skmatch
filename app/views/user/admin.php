@@ -27,6 +27,8 @@
 			echo '<div id="panelProject'.$project->ID.'" class="content">';
 			echo '<form action="" method="post" >';
 			echo '<input name="id" type="hidden" value='.$project->ID.' />';
+			echo '<input name="email" type="hidden" value='.$project->email.' />';
+			echo '<input name="title" type="hidden" value='.$project->title.' />';
 			echo '<p><b>PROJECT DESCRIPTION: </b></p>';
 			echo '<p>'.$project->description.'</p>';
 
@@ -85,6 +87,8 @@
 			echo '<div id="panelPerson'.$person->ID.'" class="content">';
 			echo '<form action="" method="post" >';
 			echo '<input name="id" type="hidden" value='.$person->ID.' />';
+			echo '<input name="email" type="hidden" value='.$person->email.' />';
+			echo '<input name="headline" type="hidden" value='.$person->headline.' />';
 			echo '<p><b>PERSON DESCRIPTION: </b></p>';
 			echo '<p>'.$person->description.'</p>';
 

@@ -3,7 +3,11 @@
 */
 
 body {
-	background: url(background3.jpg) no-repeat center center fixed !important;
+	background: url(background.jpg) repeat 20% 20% !important;
+	background-size: 120% auto!important;
+  overflow: auto !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+
 }
 nav {
 	box-shadow: 2px 7px 10px #888888;
@@ -45,7 +49,7 @@ form input {
 	border-bottom-color: #cccccc;
 	border-right-color: #cccccc;
 	padding: 5px;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif !important;
 	font-size: 1.0em;
 	margin: 2px;
 }
@@ -68,7 +72,7 @@ table tr:hover {background-color:#F0F0F0; color:#000;}
 
 #content-block {
 	background: whitesmoke;
-	font-family: monospace;
+	font-family: Arial, Helvetica, sans-serif !important;
 	font-size: 16px;
 	text-align: center;
 }
@@ -77,10 +81,10 @@ table tr:hover {background-color:#F0F0F0; color:#000;}
 	font-size: 16px;
 	background-color: rgba(0, 0, 0, 0.5);
 }
-#content-block p {
+/*#content-block p {
 	padding-top: 2%;
 	padding-bottom: 2%;
-}
+}*/
 #content-divider {
 	height: 5px;
 }
@@ -104,9 +108,10 @@ table tr:hover {background-color:#F0F0F0; color:#000;}
 	background-color: antiquewhite;
 }
 .footer {
+  font-family: Arial, Helvetica, sans-serif !important;
   position: fixed;
   width: 100%;
-  height: 80px;
+  height: 120px;
   bottom: 0px;
   text-align: center;
   background-color: whitesmoke;

@@ -75,7 +75,7 @@
 	      </label>
 	    </div>
 	    <div class="large-6 columns">
-	      <input name="listYourself" type="checkbox" value="selected" <?php if($data['listed']) echo "checked";?> ><label for="listYourself">List yourself</label>
+	      <input id="listYourself" name="listYourself" type="checkbox" value="selected" <?php if($data['listed']) echo "checked";?> ><label id="listYourself" for="listYourself">List yourself</label>
 	    </div>
     </div>
     <div class="row">
@@ -88,7 +88,7 @@
 
 	  <div class="row">
 	  	<div class="large-4 columns">
-	  		<input class="button" type='submit' name='updatePeople' value='Update'>
+	  		<input class="button" type='submit' name='updatePeople' value='Update' onclick="return confirm('Updating your information will remove your approved listing until it gets reapproved... Are you sure?');">
 	  	</div>
 	  </div>
 
